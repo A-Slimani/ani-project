@@ -9,11 +9,12 @@ using namespace std;
 	NOTES / TODO
 	- Figure out how to crawl through each directory (somewhat done)
 	- Figure out how to detect file types (done I think)
-	- 
+	- Get the files in order
 */
 
 void listFiles(const char* dirname){
-	DIR* dir = opendir(dirname);
+	// opens directory
+	DIR* dir = opendir(dirname); 
 
 	if (dir == NULL){
 		printf("empty.\n");
@@ -23,6 +24,7 @@ void listFiles(const char* dirname){
 	printf("Reading files in: %s\n", dirname);
 	printf("----------------- \n");
 
+	// assigns the dir structure and reads it
 	struct dirent* entity;
 	entity = readdir(dir);
 
@@ -34,13 +36,17 @@ void listFiles(const char* dirname){
 		// prints files that are not dot files	
 		if (ignore_matrix) printf("%d %s\n", entity->d_type ,entity->d_name);
 
+		// if it comes across a file directory it will run the function recursively
 		if(entity->d_type == DT_DIR && ignore_matrix){
+			// path name
 			char path[100] = { 0 };
 
+			// adds the directory name with the current path
 			strcat(path, dirname);
 			strcat(path, "/");
 			strcat(path, entity->d_name);
 
+			// runs the function recursively
 			listFiles(path);
 		}
 
