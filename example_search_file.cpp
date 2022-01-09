@@ -23,7 +23,7 @@ void listFiles(const char* dirname){
 	}
 
 	printf("----------------- \n");
-	printf("Reading files in: %s\n", dirname);
+	printf("READING FILES IN: %s\n", dirname);
 	printf("----------------- \n");
 
 	// assigns the dir structure and reads it
