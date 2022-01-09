@@ -9,7 +9,9 @@ using namespace std;
 	NOTES / TODO
 	- Figure out how to crawl through each directory (somewhat done)
 	- Figure out how to detect file types (done I think)
-	- Get the files in order
+	- Get the files in order (I dont think this is really needed)
+	- Get all files first before traversing through folder
+		- This can be done through sorting files first 
 */
 
 void listFiles(const char* dirname){
@@ -27,7 +29,7 @@ void listFiles(const char* dirname){
 	// assigns the dir structure and reads it
 	struct dirent* entity;
 	entity = readdir(dir);
-
+	
 	while(entity != NULL){
 
 		// ignores dot files 
