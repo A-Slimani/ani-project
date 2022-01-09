@@ -58,6 +58,6 @@ void listFiles(const char* dirname){
 }
 
 int main(int argc, char* argv[]){
-	listFiles("/home/aboud/anime/");
+	listFiles(".");
 	return 0;
 }
